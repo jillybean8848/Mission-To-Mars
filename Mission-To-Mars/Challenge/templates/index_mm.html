@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"; />
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Secular+One&display=swap" rel="stylesheet">
+    <!--link rel="stylesheet" href="../templates/m2m-style.css" / --  relative path issues -->
+
+    <style type="text/css">
+      body{background-color: rgb(119, 23, 10); color: rgb(27, 23, 23);}
+      .jumbotron {background: rgb(96, 28, 21) url("https://mars.nasa.gov/system/news_items/main_images/8944_1-PIA24546-1280.jpg") no-repeat fixed top;}
+      .jumbotron h1 {font-family: "Secular One"; border 1px solid black; line-height: 120px;}
+      .jumbotron a:link {background-color:rgb(111, 50, 6); border-color: rgb(117, 5, 5); border-radius: 30px;}
+      .jumbotron a:hover, .jumbotron a:active {background-color: rgb(108, 8, 8); border-color: rgb(25, 23, 23);}
+      .jumbotron a:visited {background-color:rgb(110, 26, 5);}
+      .btn-lg {background-color: rgb(109, 11, 11); color: rgb(17, 16, 16); border-color: rgb(46, 48, 51);}
+      .paddthis {padding-right: 50px;}
+      #mars-facts {margin: 0 auto !important;}
+      thead {display:none;}
+      th {background-color: rgb(149, 69, 7); vertical-align: right !important; padding: 0 4px !important;}
+      td {background-color: rgb(149,69, 7); padding: 0 4px !important; width: 150px !important;}
+      .col-md-3 a {color: rgb(11, 11, 11);}
+      .col-md-3 a:hover {color: rgb(8, 8, 8);}
+      #footer {height: 100px; text-align: center;}
+      #footer ul {text-intent: 0;}
+      #footer a {color: rgb(120, 23, 12);}
+
+    @media (max-width: 768px) {
+      .mobilethumb img {width: 25%; height: 25%}
+    }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <!-- Add Jumbotron to Header -->
+      <div class="jumbotron text-center">
+        <h1>Mission to Mars</h1>
+        <!-- Add a button to activate scraping script -->
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      </div>
+      <!-- Add section for Mars News -->
+      <div class="row" id="mars-news" /*style="background-color:black;"*/>
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <h2>Latest Mars News</h2>
+              <h4 class="media-heading">{{ mars.news_title }}</h4>
+              <p>{{ mars.news_paragraph }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Section for Featured Image and Facts table -->
+      <div class="row" id="mars-featured-image" /*style="background-color:red; padding-bottom: 100px;"*/>
+        <div class="col-md-6" class="mobilethumb"> 
+          <h2>Featured Mars Image</h2>
+          <img
+            src="{{mars.featured_image }}"
+            class="img-responsive"
+            alt="Responsive image"
+          />
+        </div>
+          
+        <!-- Mars Facts -->
+        <div class="col-md-6">
+          <div class="row" id="mars-facts">
+            <h2>Mars Facts</h2>
+          </div>
+          {{ mars.facts | safe }}
+        </div>
+      </div>
+
+      <!-- Section for Hemispheres -->
+      <div class="row" id="mars-hemispheres" /*style="background-color:red*/>
+        <div class="col-md-12">
+        <h2>The Four Hemispheres of Mars</h2>
+          {% for each_hemisphere in mars.hemispheres %}
+          <div class="col-md-3">
+            <a href="{{each_hemisphere.img_url}}">
+            <img
+              src="{{each_hemisphere.img_url}}"
+              class="img-responsive"
+              alt="{{each_hemisphere.title}} image"
+              title="{{each_hemisphere.title}} image"
+            />
+            <label>{{each_hemisphere.title}}</label></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <br clear="all" />
+      <hr />
+      <div class="col-md-12">
+        <div id="footer">Info on this page was pulled from the following sources:
+          <ul>
+            <li style="display: inline;"><a href="https://redplanetscience.com">https://redplanetscience.com</a> |</li>
+            <li style="display: inline;"><a href="https://spaceimages-mars.com">https://spaceimages-mars.com</a> |</li>
+            <li style="display: inline;"><a href="https://galaxyfacts-mars.com">https://galaxyfacts-mars.com</a> |</li>
+            <li style="display: inline;"><a href="https://marshemispheres.com">https://marshemispheres.com</a></li>
+          </ul> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+body{background-color: rgb(158, 12, 12); color: rgb(23, 21, 21);}
+.jumbotron {background: rgb(3, 8, 6) url("https://mars.nasa.gov/system/news_items/main_images/8944_1-PIA24546-1280.jpg") no-repeat fixed top;}
+.jumbotron h1 {font-family: "Secular One"; border 1px solid black; line-height: 120px;}
+.jumbotron a:link {background-color:rgb(149, 45, 16); border-color: black; border-radius: 30px;}
+.jumbotron a:hover, .jumbotron a:active {background-color: black; border-color: rgb(7, 7, 7);}
+.jumbotron a:visited {background-color:rgb(46, 48, 51);}
+.btn-lg {background-color: rgb(149, 38, 7); color: white; border-color: rgb(46, 48, 51);}
+.paddthis {padding-right: 50px;}
+#mars-facts {margin: 0 auto !important;}
+thead {display:none;}
+th {background-color: rgb(27, 27, 27); vertical-align: right !important; padding: 0 4px !important;}
+td {background-color: rgb(46, 48, 51); padding: 0 4px !important; width: 150px !important;}
+.col-md-3 a {color: rgb(2, 2, 2);}
+.col-md-3 a:hover {color: rgb(46, 48, 51);}
+#footer {height: 100px; text-align: center;}
+#footer ul {text-intent: 0;}
+#footer a {color: rgb(134, 29, 17);}
+
+@media (max-width: 768px) {
+.mobilethumb img {width: 25%; height: 25%}
+}
